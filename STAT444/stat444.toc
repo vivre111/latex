@@ -1,0 +1,32 @@
+\contentsline {section}{\numberline {1}Course Information}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Contact}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Grade}{3}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Global modelling methods}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Quick review of linear regression}{3}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Simple Linear Regression}{3}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Multiple Linear Regression}{3}{subsubsection.2.1.2}%
+\contentsline {subsubsection}{\numberline {2.1.3}Least squares estimation}{3}{subsubsection.2.1.3}%
+\contentsline {subsubsection}{\numberline {2.1.4}Alternative methods to ordinary least squares regression}{5}{subsubsection.2.1.4}%
+\contentsline {subsubsection}{\numberline {2.1.5}Influential Points}{5}{subsubsection.2.1.5}%
+\contentsline {subsubsection}{\numberline {2.1.6}Reducible vs. irreducible errors}{5}{subsubsection.2.1.6}%
+\contentsline {subsubsection}{\numberline {2.1.7}Bias-Variance tradeoff}{5}{subsubsection.2.1.7}%
+\contentsline {subsubsection}{\numberline {2.1.8}Cross-Validation: Basic idea}{6}{subsubsection.2.1.8}%
+\contentsline {subsubsection}{\numberline {2.1.9}Leave-One-Out CV: LOOCV}{6}{subsubsection.2.1.9}%
+\contentsline {subsubsection}{\numberline {2.1.10}Generalized Cross-Validation:GCV}{7}{subsubsection.2.1.10}%
+\contentsline {subsubsection}{\numberline {2.1.11}Best-subset selection}{7}{subsubsection.2.1.11}%
+\contentsline {subsubsection}{\numberline {2.1.12}Forward/Backward-stepwise selection}{7}{subsubsection.2.1.12}%
+\contentsline {subsubsection}{\numberline {2.1.13}Weighted Least Squares}{8}{subsubsection.2.1.13}%
+\contentsline {subsubsection}{\numberline {2.1.14}choice of W}{8}{subsubsection.2.1.14}%
+\contentsline {subsection}{\numberline {2.2}Regularized regression models}{9}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Robust regression and breakdown}{9}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Non-parametric regression}{9}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Locally adaptive methods(smooth functions)}{9}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Local linear regression}{9}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Smoothing splines}{9}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Kernel method}{9}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Density/intensity function estimate}{9}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Preditive accuracy}{9}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Roles of training and test data, cross-validation, etc}{9}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Bias/Variance trade-off and parameter choice}{9}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Locally adaptive methods(tree-based methods)}{9}{section.5}%
+\contentsline {subsection}{\numberline {5.1}regression trees}{9}{subsection.5.1}%

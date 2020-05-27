@@ -1,0 +1,402 @@
+\documentclass[10pt]{article} 
+
+\usepackage{fullpage}
+\usepackage{bookmark}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref} % for the URL
+\usepackage[shortlabels]{enumitem}
+\usepackage{mathtools}
+\usepackage[most]{tcolorbox}
+\usepackage[amsmath,standard,thmmarks]{ntheorem} 
+\usepackage{physics}
+\usepackage{pst-tree} % for the trees
+\usepackage{verbatim} % for comments, for version control
+\usepackage{tabu}
+\usepackage{tikz}
+\usepackage{float}
+
+\lstnewenvironment{python}{
+\lstset{frame=tb,
+language=Python,
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=none,
+numberstyle=\tiny\color{Green},
+keywordstyle=\color{Violet},
+commentstyle=\color{Gray},
+stringstyle=\color{Brown},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=2}
+}
+{}
+
+\lstnewenvironment{cpp}{
+\lstset{
+backgroundcolor=\color{white!90!NavyBlue},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+basicstyle={\scriptsize\ttfamily},        % the size of the fonts that are used for the code
+breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+breaklines=true,                 % sets automatic line breaking
+captionpos=b,                    % sets the caption-position to bottom
+commentstyle=\color{Gray},    % comment style
+deletekeywords={...},            % if you want to delete keywords from the given language
+escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+% firstnumber=1000,                % start line enumeration with line 1000
+frame=single,	                   % adds a frame around the code
+keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+keywordstyle=\color{Cyan},       % keyword style
+language=c++,                 % the language of the code
+morekeywords={*,...},            % if you want to add more keywords to the set
+% numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+% numbersep=5pt,                   % how far the line-numbers are from the code
+% numberstyle=\tiny\color{Green}, % the style that is used for the line-numbers
+rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+showstringspaces=false,          % underline spaces within strings only
+showtabs=false,                  % show tabs within strings adding particular underscores
+stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+stringstyle=\color{GoldenRod},     % string literal style
+tabsize=2,	                   % sets default tabsize to 2 spaces
+title=\lstname}                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+{}
+
+% floor, ceiling, set
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
+\DeclarePairedDelimiter{\iprod}{\langle}{\rangle}
+
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\mean}{mean}
+
+% commonly used sets
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\P}{\mathbb{P}}
+
+\newcommand{\sset}{\subseteq}
+
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+
+\newtheorem{thm}{Theorem}[subsection]
+\tcolorboxenvironment{thm}{
+enhanced jigsaw,
+colframe=Dandelion,
+colback=White!90!Dandelion,
+drop fuzzy shadow east,
+rightrule=2mm,
+sharp corners,
+before skip=10pt,after skip=10pt
+}
+
+\newtheorem{cor}{Corollary}[thm]
+\tcolorboxenvironment{cor}{
+boxrule=0pt,
+boxsep=0pt,
+colback={White!90!RoyalPurple},
+enhanced jigsaw,
+borderline west={2pt}{0pt}{RoyalPurple},
+sharp corners,
+before skip=10pt,
+after skip=10pt,
+breakable
+}
+
+\newtheorem{lem}[thm]{Lemma}
+\tcolorboxenvironment{lem}{
+enhanced jigsaw,
+colframe=Red,
+colback={White!95!Red},
+rightrule=2mm,
+sharp corners,
+before skip=10pt,after skip=10pt
+}
+
+\newtheorem{ex}[thm]{Example}
+\tcolorboxenvironment{ex}{% from ntheorem
+blanker,left=5mm,
+sharp corners,
+before skip=10pt,after skip=10pt,
+borderline west={2pt}{0pt}{Gray}
+}
+
+\newtheorem*{pf}{Proof}
+\tcolorboxenvironment{pf}{% from ntheorem
+breakable,blanker,left=5mm,
+sharp corners,
+before skip=10pt,after skip=10pt,
+borderline west={2pt}{0pt}{NavyBlue!80!white}
+}
+
+\newtheorem{defn}{Definition}[subsection]
+\tcolorboxenvironment{defn}{
+enhanced jigsaw,
+colframe=Cerulean,
+colback=White!90!Cerulean,
+drop fuzzy shadow east,
+rightrule=2mm,
+sharp corners,
+before skip=10pt,after skip=10pt
+}
+
+\newtheorem{prop}[thm]{Proposition}
+\tcolorboxenvironment{prop}{
+boxrule=0pt,
+boxsep=0pt,
+colback={White!90!Green},
+enhanced jigsaw,
+borderline west={2pt}{0pt}{Green},
+sharp corners,
+before skip=10pt,
+after skip=10pt,
+breakable
+}
+
+\setlength\parindent{0pt}
+\setlength{\parskip}{2pt}
+
+
+\begin{document}
+\let\ref\Cref
+
+\title{\bf{STAT 444 Statistical Learning}}
+\date{\today}
+\author{Austin Xia}
+
+\maketitle
+\newpage
+\tableofcontents
+\listoffigures
+\listoftables
+\newpage
+\section{Course Information}
+    \subsection{Contact}
+        \begin{center}
+            Instructor: Reza Ramezan\\
+            Email: rramezan@uwaterloo.ca
+        \end{center}
+    \subsection{Grade}
+        \begin{center}
+            Assignments 70\%\\
+            Quizzes 30\%\\
+        \end{center}
+\section{Global modelling methods}
+    \subsection{Quick review of linear regression}
+        \subsubsection{Simple Linear Regression}
+            $$\mu(x_i)=\mu_{0i}+\mu_{1i}(x_i)$$
+            regression line is\\
+            $$\hat{\mu}(x_i)=\hat{\mu}_{0i}+\hat{\mu}_{1i}(x_i)$$
+            $y-\mu(x_i)$ and $y-\hat{\mu}(x_i)$ are not the same thing
+        \subsubsection{Multiple Linear Regression}
+            $y=\mu(x)+r$ where $\mu(x)=\beta_0+\beta_1x_1+\beta_2x_2+\beta_3x_3$
+            here comes p value and t score\\
+            $$Y|X=\beta_0+\beta_1x_1+\beta_2x_2+\beta_3x_3+\epsilon $$
+            Y is response vector\\$\beta$ is parameter\\$\epsilon$ is error terms\\X is design matrix
+        \subsubsection{Least squares estimation}
+            \begin{defn}[RSS]
+                $$RSS(\beta)=\sum_{i=1}^{n}\left(y_i-\beta_0-\sum_{j=1}^{p}\beta_jx_{ij}\right)^2=(y-X\beta)^T(y-X\beta)$$
+                SSE and RSS are the same thing, both referring to the Residuals sum of squares\\
+            \end{defn}
+            \begin{defn}[Ordinary least square estimate]
+                $$\hat{\beta}=argmin_\beta (RSS(\beta))=argmin\left((y-X\beta)^T(y-X\beta)\right)$$
+            \end{defn}
+            $$\frac{d}{d\beta}RSS(\beta)=-2X^T(y-X\beta)$$
+            $$X^T(y-X\beta)=0$$
+            $$X^Ty=X^TX\beta$$
+            $$\beta=(X^TX)^{-1}X^Ty$$
+            It's normally asuumed that:\\
+            \begin{itemize}
+                \item The mean of Y is linear function of X
+                \item Error terms have constant mean 0
+                \item Error terms have constant variance $\sigma ^2$
+                \item Error terms follow a normal distribution
+                \item Error terms are independent
+            \end{itemize}
+            Need these assumptions to do prediction
+           \begin{thm}
+               Assume we can write y in terms of its mean and an error term
+               $$Y=E(Y|X)+\epsilon=\beta_0+\sum\beta_iX_i+\epsilon$$
+               where $\epsilon \thicksim MVN(\beta, \sigma^2I_{n*n})$
+               then
+               $$\tilde{\beta}_{OLS}\sim MVN(\beta, \sigma^2(X^TX)^{-1}) $$
+               $$(n-p-1)\frac{\tilde{\sigma}^2}{\sigma^2}\sim \chi^2_{n-p-1}$$
+           \end{thm}
+            \begin{defn}[The Hat Matrix]
+                $$\hat{y}=X\hat{\beta}=X(X^TX)^{-1}X^Ty=Hy$$
+            \end{defn}
+            We have:
+            \begin{itemize}
+                \item $H^2=H$
+                \item H(1-H)=1
+                \item tr(H)=p+1
+            \end{itemize}
+            {\Large$\hat{r}$ verses $\epsilon$}
+            \begin{itemize}
+                \item $\epsilon=y-X\beta$
+                \item $r=y-\hat{y}=y-X\hat{\beta}$
+                \item r is observed residual, $\epsilon$ is model error terms
+                \item We will use $\hat{r}$ as approximate values for $\epsilon$ to check if\begin{itemize}
+                    \item $E(\epsilon_i)=0$
+                    \item $Var(\epsilon_i)=\sigma^2$
+                    \item $\epsilon_1, ..., \epsilon_n$ are Normally distrubuted
+                    \item $\epsilon_1, ..., \epsilon_n$ are independent
+                \end{itemize}
+            \end{itemize}
+
+
+        \subsubsection{Alternative methods to ordinary least squares regression}
+            If assumptions on error term don't hold true:
+            \begin{itemize}
+                \item Use transformation to project onto a space where assumption hold true
+                \item Use weighted least squares regression
+                \item Use non-parametric models. e.g. kernel regression, splines, etc.
+            \end{itemize}
+        \subsubsection{Influential Points}
+            Based on hat matrix H $\hat{y}=Hy$, we measure influnce by:
+            $$\frac{d\hat{y}_i}{dy_i}=H_{ii}$$
+            which is influnence of $y_i$ on the data.\\If high leverage points exist in data, one can use robust regression model\\
+            Multicolinearity, Curse of Dimensionality
+            $(X^TX)^{-1}$ must exsit, so under multicollinearity or $p \geq n$, LS estimation breaks down.
+            \\or if rows are closed to linearly dependent, trace of Hat Matrix get to large, causing prediction having variance too large
+        \subsubsection{Reducible vs. irreducible errors}
+            \begin{itemize}
+                \item prediction is for unobserved data, it needs test set 
+                \item inference. We would like to answer these questions in light of sampling variability.
+            \end{itemize}
+            $$MSE=E\left([Y-\hat{Y}]^2|X\right)=\left(f(x)-\hat{f}(x)\right)^2+Var(\epsilon)$$
+            the first term is Reducible error, could be 0 if $\hat{f}==f$\\
+            the second term is irreducible error. caused by projecting Y into space of X
+        \subsubsection{Bias-Variance tradeoff}
+            $$E\left([Y_0-\hat{f}(x_0)]^2\right)=E[(f(x_0)-E(\hat{f}(x_0))]^2+E[(\hat{f}(x_0)-E(\hat{f}(x_0))]^2+Var(\epsilon)$$
+            which is $$Bias(\hat{f}(x_0))^2 + Var(\hat{f}(x_0))^2+Var(\epsilon)$$
+            Bias decrease, flexibility increase as complexity increase\\
+            Variance increase, stability decrease as complexity increase
+        \subsubsection{Cross-Validation: Basic idea}
+            \begin{defn}[Expected error]
+                $E(L(Y,\hat{f}(X))$  where $\hat{f}$ is estimate of f, L (loss function) measures distance between Y and $\hat{f}(X)$
+                \\eg squared error loss function is defined as $$L(Y,\hat{f}(X))=(Y-\hat{f}(X))^2$$
+            \end{defn}
+            {\Large Cross Validation forms many test/training sets and measure the prediction error on each test set. The average of these error setimates the expected prediction error}
+            
+            \begin{defn}
+                \begin{itemize}
+                    \item Partition data ramdomly to k disjoint and equal-size sets $T_1, ..., T_n$ each of size $n_k=n/k$
+                    \item For $ i=1,...,k$ construct training sets $T_{-i}=T_1 ... \cup T_{i-1} \cup T_{i+1} \cup ... T_n$
+                    \\ calculate $$sMSE_i = \frac{1}{n_k}\sum_{j\in T_i}\left(y_j-\hat{f}^{-i}(x_j)\right)^2$$
+                    where $f^{-i}(x_j)$ is estimate/fitted value of $y_i$ based on a model fitted to $T_{-i}$
+                    \item the overall k-fild cross-validation error is 
+                    $$CV_k = \frac{1}{k}\sum^k_{i=1}sMSE_i$$
+                \end{itemize}
+            \end{defn}
+            Note: loss function can be replaced
+            \\ it can be shown that 
+            $$CV_k=\frac{1}{n}\sum_{j=1}^n\left(y_j-\hat{f}^{-\omega(j)}(x_j)\right)^2$$ this formula is understood base on test set\\
+            $\omega:{1 ... n} \rightarrow {1 ... k}$ is an indexing function that inducates the partition to which observation j is allocated by the ramdomization 
+            \\{\Large choice of k is bias-variance trade-off. Large k results in similar training sets, high variance, smaller bias, more flexibility} 
+            \\in practice, k is set to 5/10
+        \subsubsection{Leave-One-Out CV: LOOCV}
+            \begin{itemize}
+                \item k=n in k-fold cross validation. i.e. training sets of size n-1 and test sets of size 1
+                \item it has largest k, so very little bias and large variance low prediction power.
+                \item it's computationally efficient. For least squres regression, it can be shown that 
+                $$CV_n=\frac{1}{n}\sum_{i=1}^nsMSE_i=\frac{1}{n}\sum_{i=1}^n\left(\frac{y_i-\hat{y_i}}{1-H_{ii}}\right)^2$$
+                The result above is true for most linear smoothers $\hat{Y}=SY$ under squared error loss, in which case $H_{ii}$ will be repalced by $S_{ii}$
+            \end{itemize}
+        \subsubsection{Generalized Cross-Validation:GCV}
+            A convenient approcimation to LOOCV for linear fitting under squared-error loss. The GCV approximation of the prediction error is 
+            $$GCV_n = \frac{1}{n}\sum\left(\frac{y_i-\hat{f}(x_i)}{1-trace(S)/n}\right)$$
+            trace(S) is effective number of parameters in the model (degree of freedom). so number of parameter increase then GCV decrease prediction power 
+        \subsubsection{Best-subset selection}
+            The subset selection is the process of selecting q < p explanatory variates in modelling the function f 
+            \\Problem with LS estimate $X\hat{\beta}=HY$
+            \begin{itemize}
+                \item prediction accurary, LS have low bias, but if not $n \gg n$ they have larger variance.
+                \item multicollinearity 
+                \item if $p>n$ then LS estimate are not unique 
+                \item Model interpretability: including irrelevant variables leads to unneccessary complexity 
+            \end{itemize}
+            {\Large Best-subset Selection:}
+
+            \begin{itemize}
+                \item a total of $2^n=\binom{p}{0} +...+ \binom{p}{p}$ models are to be fitted
+                \item An efficient algorithm makes this feasible for p as large as 30-40 
+            \end{itemize}
+            Steps:
+            \begin{itemize}
+                \item $M_0$ denote the null model, no predictor, the model simply predicts sample mean 
+                \item For $k=1,...,p$: Fit all $\binom{p}{k}$ models that contain exactly k predictors
+                \\pick the best among these models. call it $M_k$ 
+                \item select the best model among them using cross-vadiated prediction error
+            \end{itemize}
+        \subsubsection{Forward/Backward-stepwise selection}
+            Forward stepwise selection The algorithm:
+            \begin{itemize}
+                \item Let $M_0$ denote the null model, containing no prectors, predicts sample mean 
+                \item For k = 0, ..., p-1\begin{itemize}
+                    \item consider all p-k models  that augument the predictors in $M_k$ with k additional predicot 
+                    \item choose the best among these p-k models, call it $M_{k+1}$.
+                \end{itemize}
+                \item select the best model
+            \end{itemize}
+            Backward stepwise selection the algorithm: every step there is one less predictor
+            \\Hybird Approach: \begin{itemize}
+                \item both forward and backward 
+                \item vriables are added to model, after each new variable, the method may also remove variables 
+                \item attempts to mimic subset selection while retaining the computational advantages of forward and backword stepwise selction
+            \end{itemize}
+            Stepwise methods are more constranit than best subset selection, hence they have lower vairance but perhaps more bias
+            \\Shrinkage/regularization methods are computationally efficient. \begin{itemize}
+                \item LS: $min_\beta(RSS)$
+                \item Shrinkage"$min_\beta (RSS)+\lambda * Pen(\beta)$
+                \\Penalizing
+            \end{itemize}
+            \subsubsection{Weighted Least Squares}
+                if we want to give more(or less) weights to different observation if there is Outliers and Heteroscedasticity
+                \\Heteroscedasticity (constant variance): $y=X\beta + \epsilon$  
+                \\$\epsilon_1,...,\epsilon_n \backsim^{iid} N(0, \sigma^2)  $
+                $$WRSS(\beta) = \sum^n_{i=1}w_i\left(y_i-\beta_0-\sum^p_{j=1}\beta_j x_{ij}\right)^2$$
+                $$\hat{\beta_{WLS}} = argmin_\beta(WRSS(\beta)) = (X^TWX)^{-1}X^TWy$$
+                derivation, see slides
+            \subsubsection{choice of W}
+                In a word it's inversly proportional to variance of $x_i$
+                \begin{itemize}
+                    \item has to do with variance of y (we have to know the variance(for some measuring device i.e.))
+                    \item if repeated measurements of Y for each X is available, then $Var(Y_i|X_i)=Var(\epsilon_i)$
+                            can be estimated
+                    \item if we can assume distribution. The variance of proprtions we find should be inversly proportional to the sample size\\
+                            so a natrual choice of weights is proportional to the sample size
+                    
+                    Choice of W:
+                    \begin{itemize}
+                        \item assumption: $Y_i$:average of $n_i$ repeated measurements.\\$w_i = k n_i$
+                    \end{itemize}
+                \end{itemize}
+
+
+
+    \subsection{Regularized regression models}
+    \subsection{Robust regression and breakdown}
+    \subsection{Non-parametric regression}
+\section{Locally adaptive methods(smooth functions)}
+    \subsection{Local linear regression}
+    \subsection{Smoothing splines}
+    \subsection{Kernel method}
+    \subsection{Density/intensity function estimate}
+\section{Preditive accuracy}
+    \subsection{Roles of training and test data, cross-validation, etc}
+    \subsection{Bias/Variance trade-off and parameter choice}
+\section{Locally adaptive methods(tree-based methods)}
+    \subsection{regression trees}
+
+
+
+\end{document}

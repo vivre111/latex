@@ -1,0 +1,332 @@
+\documentclass[10pt]{article} 
+
+\usepackage{fullpage}
+\usepackage{bookmark}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref} % for the URL
+\usepackage[shortlabels]{enumitem}
+\usepackage{mathtools}
+\usepackage[most]{tcolorbox}
+\usepackage[amsmath,standard,thmmarks]{ntheorem} 
+\usepackage{physics}
+\usepackage{pst-tree} % for the trees
+\usepackage{verbatim} % for comments, for version control
+\usepackage{tabu}
+\usepackage{tikz}
+\usepackage{float}
+
+\lstnewenvironment{python}{
+\lstset{frame=tb,
+language=Python,
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=none,
+numberstyle=\tiny\color{Green},
+keywordstyle=\color{Violet},
+commentstyle=\color{Gray},
+stringstyle=\color{Brown},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=2}
+}
+{}
+
+\lstnewenvironment{cpp}{
+\lstset{
+backgroundcolor=\color{white!90!NavyBlue},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+basicstyle={\scriptsize\ttfamily},        % the size of the fonts that are used for the code
+breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+breaklines=true,                 % sets automatic line breaking
+captionpos=b,                    % sets the caption-position to bottom
+commentstyle=\color{Gray},    % comment style
+deletekeywords={...},            % if you want to delete keywords from the given language
+escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+% firstnumber=1000,                % start line enumeration with line 1000
+frame=single,	                   % adds a frame around the code
+keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+keywordstyle=\color{Cyan},       % keyword style
+language=c++,                 % the language of the code
+morekeywords={*,...},            % if you want to add more keywords to the set
+% numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+% numbersep=5pt,                   % how far the line-numbers are from the code
+% numberstyle=\tiny\color{Green}, % the style that is used for the line-numbers
+rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+showstringspaces=false,          % underline spaces within strings only
+showtabs=false,                  % show tabs within strings adding particular underscores
+stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+stringstyle=\color{GoldenRod},     % string literal style
+tabsize=2,	                   % sets default tabsize to 2 spaces
+title=\lstname}                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+{}
+
+% floor, ceiling, set
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
+\DeclarePairedDelimiter{\iprod}{\langle}{\rangle}
+
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\mean}{mean}
+
+% commonly used sets
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\P}{\mathbb{P}}
+
+\newcommand{\sset}{\subseteq}
+
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+
+\newtheorem{thm}{Theorem}[subsection]
+\tcolorboxenvironment{thm}{
+enhanced jigsaw,
+colframe=Dandelion,
+colback=White!90!Dandelion,
+drop fuzzy shadow east,
+rightrule=2mm,
+sharp corners,
+before skip=10pt,after skip=10pt
+}
+
+\newtheorem{cor}{Corollary}[thm]
+\tcolorboxenvironment{cor}{
+boxrule=0pt,
+boxsep=0pt,
+colback={White!90!RoyalPurple},
+enhanced jigsaw,
+borderline west={2pt}{0pt}{RoyalPurple},
+sharp corners,
+before skip=10pt,
+after skip=10pt,
+breakable
+}
+
+\newtheorem{lem}[thm]{Lemma}
+\tcolorboxenvironment{lem}{
+enhanced jigsaw,
+colframe=Red,
+colback={White!95!Red},
+rightrule=2mm,
+sharp corners,
+before skip=10pt,after skip=10pt
+}
+
+\newtheorem{ex}[thm]{Example}
+\tcolorboxenvironment{ex}{% from ntheorem
+blanker,left=5mm,
+sharp corners,
+before skip=10pt,after skip=10pt,
+borderline west={2pt}{0pt}{Gray}
+}
+
+\newtheorem*{pf}{Proof}
+\tcolorboxenvironment{pf}{% from ntheorem
+breakable,blanker,left=5mm,
+sharp corners,
+before skip=10pt,after skip=10pt,
+borderline west={2pt}{0pt}{NavyBlue!80!white}
+}
+
+\newtheorem{defn}{Definition}[subsection]
+\tcolorboxenvironment{defn}{
+enhanced jigsaw,
+colframe=Cerulean,
+colback=White!90!Cerulean,
+drop fuzzy shadow east,
+rightrule=2mm,
+sharp corners,
+before skip=10pt,after skip=10pt
+}
+
+\newtheorem{prop}[thm]{Proposition}
+\tcolorboxenvironment{prop}{
+boxrule=0pt,
+boxsep=0pt,
+colback={White!90!Green},
+enhanced jigsaw,
+borderline west={2pt}{0pt}{Green},
+sharp corners,
+before skip=10pt,
+after skip=10pt,
+breakable
+}
+
+\setlength\parindent{0pt}
+\setlength{\parskip}{2pt}
+
+
+\begin{document}
+\let\ref\Cref
+
+\title{\bf{CS371 Introduction to Computational Mathematics}}
+\date{\today}
+\author{Austin Xia}
+
+\maketitle
+\newpage
+\tableofcontents
+\listoffigures
+\listoftables
+\newpage
+\section{Course Information}
+    \subsection{Contact}
+        \begin{center}
+            Instructor: Eugene Zima\\
+            Email: ezima@uwaterloo.ca
+        \end{center}
+    \subsection{Grade}
+        \begin{center}
+            4 assignments 32\%\\
+            6 on-line quizzes 18\%\\
+            Midterm 20\%\\
+            Final 30\%\\
+        \end{center}
+\section{Floating point}
+    How are numbers stored on a computer?\\
+    How does that affect Numerical algorithum and solution\\
+    {\textbf{goal of computational mathematics is defined as}\begin{itemize}
+        \item Finding and developing algorithms that solve mathematical problems computaionally (with a computer)
+        \item Desired properties of our algorithum: \begin{itemize}
+            \item Accuray: result is numerically close to the actually solution
+            \item Efficiency: quickly solve the problem with resonable resources
+            \item Robustness: algorithum works well for a variety of inputs
+        \end{itemize}
+    \end{itemize}
+    \subsection{Source of Error}
+        \begin{itemize}
+            \item Error in input\begin{itemize}
+                \item Measurement Error 
+                \item Rounding Error(due to finite digit of computer) 
+            \end{itemize}
+            \item Error as a result of calculation, approximation and algorithum \begin{itemize}
+                \item Truncation error: Talor series
+                \item Rounding error in elementary steps of algorithum
+            \end{itemize}
+        \end{itemize}
+    \subsection{Types of error}
+        \begin{itemize}
+            \item Absolute Error = $|x-\hat{x}$
+            \item Relative Error = $\frac{|x-\hat{x}|}{|x|}$
+        \end{itemize}
+    \subsection{Catastrophic Cancellation}
+    cancellation of significant digits makes unknown round-off digits rel-evant to the final result becasue we don’t know the lost digit
+    \subsection{Floating point Representation}
+        Allow the decimal point to "float"
+        \begin{defn} A Floating point number system is defined by three componentsL
+            \begin{itemize}
+                \item base: the base of number system, $b_f$
+                \item the mantissa: contains the normalized value of the number, $m_f$
+                \item exponent: which defines the offset from normalization, $e_f$
+                $$F[b=b_f,m=m_f,e_f]=\pm m * b ^e$$
+            \end{itemize}
+        \end{defn}
+        \begin{defn}[relative error in converting real number x to a floating number fl(x)]
+            $$\delta_x=\frac{x-fl(x)}{x}$$
+        \end{defn}
+        we want to find the upper bound of $\delta$
+        \begin{defn}[machine epsilon]
+            $\epsilon_{mach}$ is the smallest number $\epsilon >0$ such that $fl(1+\epsilon)>1$
+        \end{defn}
+        \begin{lem}
+            \begin{itemize}
+                \item $\epsilon_{mach}=b^{1-m}$ if chopping is used
+                \item $\epsilon_{mach}=\frac{1}{2}b^{1-m}$ if rounding is used
+            \end{itemize}
+        \end{lem}
+        \begin{thm}
+            For any floating point system F, under chopping 
+            $$|\delta_x|=|\frac{x-fl(x)}{x}|\leq \epsilon_{mach}$$
+        \end{thm}
+    \subsection{Floating point operation}
+        $$a \oplus b=fl(fl(a)+fl(b))=(a(1+n_1)+b(1+n_2))(1+n)$$ $|n|<\epsilon_{mach}$
+    \begin{defn}
+        A problem is well conditioned with respect to the absolute error if small changes in input reulst in small changes in output\\
+        A problem is ill-conditioned if small change in input reulst in large change in output
+    \end{defn}
+    \begin{defn}
+        Condition number with respect to absolute error is:
+        $\kappa_A=\frac{|\delta z|}{|\delta x|}$ and it is called absolute condition number 
+    \end{defn}
+    \begin{defn}
+        Condition number with respect to relative error is:
+        $$\kappa _R=\frac{\frac{|\delta_z|}{|z|}}{\frac{|\delta_x|}{|x|}}$$
+        
+    \end{defn}
+    For $0.1<K_A, K_R<10$, a problem is well-conditioned and for $K_A, K_R \rightarrow \infty$ problem is ill-formed
+    \subsection{vector norms}
+    There are three standard vector norms 2-norm, 1-norm and $\infty$ norm
+    \begin{defn}
+        $$|| \vec{x}||_2=\sqrt{\sum_{i=1}^n x_i^2}$$
+        $$|| \vec{x}||_\infty=max(x_i)$$
+        $$|| \vec{x}||_1=\sum_{i=1}^n|X_i|$$
+    \end{defn}
+    \begin{thm}[Cauchy-Schwartz Inequality]
+        Let || . || be a vector over a vector space V induced by inner product. Then 
+        $$|\vec{x}*\vec{y}|\leq ||\vec{x} ||* ||\vec{y} ||$$
+    \end{thm}
+    \subsection{Stability of a numerical algorithum}
+        If an algorithm propagates error and produce larger error, it's unstable algorithum\\
+        small change in initial value produce small change in final result, then algorithum is stable\\
+        An algorithm that satisfy this property is called Stable:
+        \begin{itemize}
+            \item If $E_n \approx C*n*E_0$ then growth of error is linear.
+            \item If $E_n \approx C^n*E_0$ then growth of error is exponential
+        \end{itemize}
+    \subsection{Big Oh}
+        \begin{defn}
+            $f(x)=O(x^n) as x \rightarrow 0$ is equivelant to:
+            f(x) is bounded from above by $|x|^n$, up to a constant c
+        \end{defn}
+        Example:
+        $g(x)=3x^2+7x^3$. we say $g(x)=O(X^2)$ as $x \rightarrow 0$,
+        $g(x)=O(X^3)$ as $x \rightarrow \infty$
+\section{Root Finding}
+    For a fucntion f, find x* satisfying $f(x*)=0$\\
+    Lots of applications in physics, chem, etc.
+    \begin{defn}[root finding]
+        Given f(x) and some error tolerence $\epsilon >0$, find $x^*$ such that $|f(x^*)|<\epsilon$
+    \end{defn}
+    \subsection{Four algorithms for root finding}
+        \subsubsection{Bisection Method}
+            \begin{itemize}
+                \item A simple method to find root 
+                \item Convergence is guaranteed 
+                \item f(x) should be continuous on [a, b] and $f(a)*f(b) \leq 0$
+            \end{itemize}
+            \begin{thm}
+                If f(x) is continous on the interval $[a_0, b_0]$ such that $f(a_0)f(b_0) \leq 0$ 
+                Then the interval $[a_k, b_k]$ is defined by 
+                {\Large
+                $$a_k=\left\{^{a_{k-1} \ if\ f(a_{k-1})f((a_{k-1}+b_{k-1})/2) \leq 0}_{(a_{k-1}+b_{k-1})/2 \ otherwise}\right.$$
+                $$b_k=\left\{^{b_{k-1} \ if\ f(a_{k-1})f((a_{k-1}+b_{k-1})/2) > 0}_{(a_{k-1}+b_{k-1})/2\ otherwise}\right.$$
+    }
+            \end{thm}
+            How many steps does this algorithum require?
+            $$2^{-n}|b-a| \leq t \rightarrow n \geq \frac{1}{log2}log(\frac{|b-a|}{t})$$
+            \subsubsection{fixed point method}
+                \begin{defn}
+                    $x^*$ is a fixed point of $g(x)$ if $g(x^*)=x^*$ 
+                \end{defn}
+                
+\section{Numerical Linear Algebra}
+    For matrix A, vector c, find x* satisfying $Ax^*=c$.\\
+    Applications in google page rank
+\section{Polynomial Interpolation}
+    For a set of points, find a polynomial that fits the points
+\section{Numerical Integration}
+    Find a numerical approximation to Integration
+\section{Discrete Fourier Method}
+    Fourier transforms time (or space) to/from frequency. One of the most important numerical algorithum
+
+
+\end{document}
